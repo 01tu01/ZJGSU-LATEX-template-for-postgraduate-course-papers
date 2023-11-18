@@ -146,7 +146,7 @@
         {\myLarge 成　　绩：} & {\myLarge \@score}  \\ % \cline{2-2}
       \end{tabular}
     \end{center}
-    \vfill
+    \vspace{1cm}
     \myLarge{\@date}
   \end{center}
   \clearpage
