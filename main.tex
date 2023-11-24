@@ -16,7 +16,7 @@
 % 封面的学生姓名，请修改
 \name{你的名字}
 % 封面的成绩，留白，无需修改
-\score{　　}
+\score{　　}    % 若无需成绩注释此行
 % 封面的日期，无需修改
 \date{\today}
 % ---------------------虚线部分需填入个人信息---------------------
@@ -24,8 +24,7 @@
 % 重定义摘要二字的大小
 \renewcommand{\abstractname}{\large \heiti \bfseries 摘要\\}
 % 更改section的自动编号方式、字体，并设置为四号字体
-\titleformat*{\section}{\large\heiti\bfseries}
-\renewcommand\thesection{\zhnum{section}、}
+\titleformat{\section}{\heiti\large\centering\bfseries}{\zhnum{section}、}{0em}{}
 % 更改网址url字体为空，即跟随主文字字体
 \def\UrlFont{}
 % 设置图片表格为五号，粗体
@@ -43,11 +42,6 @@
 \renewcommand{\refname}{\large \heiti \bfseries 参考文献}
 % 引用时变上标
 \newcommand{\upcite}[1]{\textsuperscript{\textsuperscript{\cite{#1}}}}
-% 更改附录名
-\renewcommand\appendix{\par
-    \setcounter{section}{0}
-    \setcounter{subsection}{0}
-    \gdef\thesection{附录\zhnum{section}}}
 
 
 % ----------------------下面是文章内容，请填入自己的文章----------------------
@@ -65,10 +59,12 @@
 \end{center}
 \vspace{1cm}
 % 2.2 摘要内容
+\addcontentsline{toc}{section}{摘要}    % 无需摘要进目录的把这行注释掉
 \begin{abstract}
+{\normalsize
 请在这里输入摘要内容.
 
-{\bfseries 关键词：关键词1，关键词2，关键词3}
+{\bfseries 关键词：关键词1，关键词2，关键词3}}
 \end{abstract}
 \clearpage
 % 3. 目录
@@ -149,9 +145,10 @@ Matlab代码参见\ref{app:1}.
 \clearpage
 
 % 6. 附录
-\appendix
+\section*{附录}
+\addcontentsline{toc}{section}{附录}
 \small
-\section{Matlab代码} \label{app:1}
+\subsection*{一、Matlab代码} \label{app:1}
 \begin{lstlisting}[language=matlab]
 Image=im2double(rgb2gray(imread('pic2.jpg')));
 window=15;

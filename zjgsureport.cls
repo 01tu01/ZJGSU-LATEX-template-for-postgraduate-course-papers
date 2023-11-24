@@ -66,8 +66,10 @@
 \newCJKfontfamily\songti{SimSun}[AutoFakeBold]
 \setCJKmainfont{SimSun}[AutoFakeBold]
 
-% 与word中A4默认页边距保持一致
-\geometry{top=2.54cm,bottom=2.54cm,left=3.18cm,right=3.18cm}
+% 与word中A4默认页边距保持一致，从上到下哦分别是普通、适中、某特定论文边框类型
+% \geometry{top=2.54cm,bottom=2.54cm,left=3.18cm,right=3.18cm}
+% \geometry{top=2.54cm,bottom=2.54cm,left=1.91cm,right=1.91cm}
+\geometry{top=3.0cm,bottom=2.5cm,left=2.5cm,right=2.0cm}
 
 % 所需信息，可仿照修改和添加
 \newcommand\mytitle[1]{\def\@mytitle{#1}}
@@ -77,7 +79,7 @@
 \newcommand\class[1]{\def\@class{#1}}
 \newcommand\stuid[1]{\def\@stuid{#1}}
 \newcommand\name[1]{\def\@name{#1}}
-\newcommand\score[1]{\def\@score{#1}}
+\newcommand\score[1]{\def\@score{#1}}   % 若无需成绩注释此行
 \renewcommand\date[1]{\def\@date{#1}}
 
 % myLarge对应16pt，三号字体
@@ -94,6 +96,16 @@
 % 代码lst的rgb设置，设置为Consolas字体
 \definecolor{mygreen}{rgb}{0,0.6,0}
 \setmonofont{Consolas}
+\lstdefinelanguage{Stata}{% 考虑到部分专业使用Stata，listings不支持，此处自定义
+  keywords={gen, replace, if, in, foreach, forvalues, local, global, di, display, else, while, do, end, program, args, version, tempfile, quietly, regress, summarize, graph, twoway},
+  keywordstyle=\color{black},
+  sensitive=false,
+  comment=[l]{//},
+  commentstyle=\color{mygreen},
+  stringstyle=\color{black},
+  morestring=[b]",
+  basicstyle={\small\ttfamily},     % 整体使用五号字体，小四字体只需删除\small
+}
 \lstset{
   numbers=left,
   breaklines=true,
@@ -105,7 +117,7 @@
   keywordstyle=\color{blue},                % 关键字蓝色
   commentstyle=\color{mygreen},             % 注释绿色
   rulesepcolor=\color{red!0!green!0!blue!0},
-  basicstyle=\ttfamily,                     % 整体字体是ttfamily
+  basicstyle={\small\ttfamily},             % 整体字体是ttfamily，使用五号字体，小四字体只需删除\small
   xleftmargin=1em,
   xrightmargin=1em,
   aboveskip=1em
@@ -143,7 +155,7 @@
         {\myLarge 班　　级：} & {\myLarge \@class}  \\ % \cline{2-2}
         {\myLarge 学　　号：} & {\myLarge \@stuid} \\ % \cline{2-2}
         {\myLarge 学生姓名：} & {\myLarge \@name}  \\ % \cline{2-2}
-        {\myLarge 成　　绩：} & {\myLarge \@score}  \\ % \cline{2-2}
+        {\myLarge 成　　绩：} & {\myLarge \@score}  \\ % \cline{2-2}  % 若无需成绩注释此行
       \end{tabular}
     \end{center}
     \vspace{1cm}
